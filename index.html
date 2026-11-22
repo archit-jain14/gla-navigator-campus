@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GLA Campus Navigator</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css"></head><body>
+<header><div class="brand"><span class="logo">GLA</span><div><b>GLA University, Mathura</b><small>Campus Navigator · Design Thinking Project</small></div></div>
+<nav id="tabs"><button data-t="home" class="on">🏠 Home</button><button data-t="map">🗺️ Map</button><button data-t="route">🧭 Navigate</button><button data-t="more">ℹ️ More</button></nav></header>
+<main>
+<section id="home" class="tab on">
+ <div class="hero"><span class="eyebrow">Welcome to GLA University, Mathura</span><h1>Where do you want to go?</h1><p class="sub">Find buildings, canteens, hostels and labs on campus, then get directions in a tap.</p>
+ <div class="search"><span>🔍</span><input id="q" type="search" placeholder="Search library, canteen, hostel, lab…" autocomplete="off"></div>
+ <div id="chips" class="chips"></div></div>
+ <div id="results" class="grid"></div>
+ <div class="two"><div><h2>Quick access</h2><div id="quick" class="quick"></div>
+ <h2>Popular destinations</h2><div id="popular" class="grid"></div></div>
+ <aside><h2>Current location</h2><div class="panel" id="locCard"><p id="locText">Not set. Use GPS or choose a starting point manually.</p>
+ <button class="btn" id="gpsBtn">📍 Use my GPS location</button>
+ <select id="manualLoc"></select>
+ <small>GPS works outdoors only. Indoors (floors, rooms) it is unreliable, so this app shows buildings, not room-level positions.</small></div>
+ <h2>★ Favourites</h2><div id="favs" class="list"></div><h2>🕘 Recent</h2><div id="recents" class="list"></div></aside></div>
+</section>
+<section id="map" class="tab"><div class="bar"><div id="mapChips" class="chips"></div>
+ <label class="sw"><input type="checkbox" id="edit"> Edit mode (drag markers to correct them)</label>
+ <button class="btn sm" id="addHere" hidden>➕ Add new place (tap map)</button><button class="btn sm" id="addGps" hidden>➕ Add at my GPS</button><button class="btn sm" id="export" hidden>⬇ Export corrected data</button><button class="btn sm ghost" id="resetEdits" hidden>Reset edits</button></div>
+ <div id="mapEl"></div><p class="note">Orange “Sample” markers are placeholder positions, not surveyed. Drag them in Edit mode to the real spot; dragged markers become “User-verified”.</p></section>
+<section id="route" class="tab"><div class="panel wide"><h2>Plan a route</h2>
+ <div class="form"><label>From<select id="from"></select></label><button class="btn ghost" id="swap" title="Swap">⇅</button><label>To<select id="to"></select></label></div>
+ <div class="row"><button class="btn" id="pickMap">👆 Tap on map to set start</button><button class="btn" id="gps2">📍 Use GPS</button></div>
+ <div id="routeOut" class="out">Choose a start and a destination.</div>
+ <div id="routeMap"></div></div></section>
+<section id="more" class="tab"><div class="two">
+ <div><h2>🚨 Emergency</h2><div class="panel"><p><b>112</b> National emergency · <b>108</b> Ambulance · <b>100</b> Police</p><p class="warn">Campus security / medical centre phone: <b>to be verified</b></p><div id="emerg" class="list"></div></div>
+ <h2>Campus information</h2><div class="panel" id="info"></div></div>
+ <div><h2>Feedback / Report incorrect location</h2><div class="panel">
+ <select id="fbType"><option>Report incorrect location</option><option>Suggestion</option><option>Bug</option></select><select id="fbPlace"></select>
+ <textarea id="fbText" rows="4" placeholder="What should be corrected?"></textarea>
+ <button class="btn" id="fbSend">Save feedback</button><button class="btn ghost" id="fbDl">⬇ Download all feedback</button><p id="fbMsg" class="note"></p>
+ <small>No server is connected: feedback is saved on this device only. Download it to share with your team.</small></div>
+ <h2>Data status</h2><div class="panel" id="dstat"></div></div></div></section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script><script src="app.js"></script></body></html>
